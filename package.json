@@ -23,12 +23,15 @@
     "scripts": {
         "start": "nodemon --es-module-specifier-resolution=node ."
     },
-    "devDependencies": {
-    },
     "dependencies": {
+        "@olton/datetime": "^2.0.8",
+        "express": "^4.17.3",
+        "node-fetch": "^3.2.3",
+        "pug": "^3.0.2",
+        "serve-favicon": "^2.5.0",
+        "ws": "^8.5.0"
     },
-    "staticFiles": {
-    },
+    "staticFiles": {},
     "browserslist": [
         "last 1 Chrome versions",
         "last 1 Firefox versions",
