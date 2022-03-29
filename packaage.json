@@ -1,0 +1,38 @@
+{
+    "name": "@olton/aptos-monitor",
+    "version": "0.1.0",
+    "license": "MIT",
+    "main": "src/index.js",
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/olton/aptos-monitor.git"
+    },
+    "keywords": [
+        "aptos",
+        "tools",
+        "monitor",
+        "api",
+        "metrics"
+    ],
+    "author": "Serhii Pimenov <serhii@pimenov.com.ua>",
+    "bugs": {
+        "url": "https://github.com/olton/aptos-monitor/issues"
+    },
+    "homepage": "https://github.com/olton/aptos-monitor#readme",
+    "scripts": {
+        "start": "nodemon --es-module-specifier-resolution=node ."
+    },
+    "devDependencies": {
+    },
+    "dependencies": {
+    },
+    "staticFiles": {
+    },
+    "browserslist": [
+        "last 1 Chrome versions",
+        "last 1 Firefox versions",
+        "last 1 Opera versions",
+        "last 1 Edge versions"
+    ]
+}
