@@ -1,4 +1,14 @@
 
+const getFakeData = (len, inc = 2000, init = 0) => {
+    const a = []
+    let d = datetime().time() - inc * len
+    for (let i = 0; i < len; i++) {
+        a.push([d, init])
+        d += inc
+    }
+    return a
+}
+
 const copy2clipboard = (text) => {
     const el = document.createElement('textarea')
     el.value = text

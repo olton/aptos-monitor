@@ -11,14 +11,186 @@ html.light-theme.scrollbar-type-1.sb-darkViolet
         title= title
 
     body
+        header.container-fluid
+            div.row
+                div.cell-md-3
+                    div.logo-container.h-100.d-flex.flex-align-center.flex-align-start-md.flex-justify-center.flex-justify-start-md.flex-column
+                        div.h5.text-light.no-wrap.mb-0.mt-2
+                            span.fg-accent.text-bold APTOS
+                            span.fg-warning MONITOR
+                            small.ml-1.fg-normal#version #{version}
+                        div.mt-1.text-small.text-upper(style="line-height: 1")
+                            span Convenient monitoring of your Aptos node!
+                        div
+                            div.text-small.no-wrap.text-center.text-left-md
+                                span Copyright &copy; 2022 by
+                                a.ml-1(href="https://pimenov.com.ua") Serhii Pimenov
 
+                div.cell-md-6
+                    div.h1.mb-0.text-center#monitor-time
+                    div.text-leader2.text-center
+                        span node health:
+                        span.ml-1#node-health Unknown
+
+                div.cell-md-3
+                    div.text-center.text-right-md.mt-2
+                        div.text-small
+                            span.ml-1.fg-normal#os-distro Unknown
+                        div.text-small
+                            span Server time:
+                            span.ml-1#server-time.fg-accent.text-bold 00:00
+                        div.text-small
+                            span Server uptime:
+                            span.ml-1#server-uptime.fg-accent.text-bold Unknown
+                        div.text-small.no-wrap
+                            span.ml-1#cpu-info.fg-normal Unknown
+
+        section.container-fluid
+            div.row
+                div.cell-md-6.cell-lg-3#ledger-info
+                    div( data-role="panel" data-title-caption="LEDGER" )
+                        table.table.compact.cell-border
+                            tr
+                                td.no-wrap Chain ID
+                                td.text-right
+                                    span#chain_id 0
+                            tr
+                                td Epoch
+                                td.text-right
+                                    span#epoch 0
+                            tr
+                                td Version
+                                td.text-right
+                                    span#ledger_version 0
+                            tr
+                                td Timestamp
+                                td.text-right
+                                    span#ledger_timestamp DD/MM/YYYY HH:mm:ss
+
+                div.cell-md-6.cell-lg-3#node-sync
+                    div( data-role="panel" data-title-caption="SYNC STATE" )
+                        table.table.compact.cell-border
+                            tr
+                                td.no-wrap Committed
+                                td.text-right
+                                    span#sync-committed 0
+                            tr
+                                td Highest
+                                td.text-right
+                                    span#sync-highest 0
+                            tr
+                                td Synced
+                                td.text-right
+                                    span#sync-synced 0
+                            tr
+                                td Target
+                                td.text-right
+                                    span#sync-target 0
+
+                div.cell-md-6.cell-lg-3#node-connections
+                    div( data-role="panel" data-title-caption="CONNECTIONS" )
+                        table.table.compact.cell-border
+                            tr
+                                td.no-wrap Inbound
+                                td.text-right
+                                    span#conn-inbound 0
+                            tr
+                                td Outbound
+                                td.text-right
+                                    span#conn-outbound 0
+
+                div.cell-md-6.cell-lg-3#node-counters
+                    div( data-role="panel" data-title-caption="COUNTERS" )
+                        table.table.compact.cell-border
+                            tr
+                                td.no-wrap Sent total
+                                td.text-right
+                                    span#sent-requests-total 0
+                            tr
+                                td Server summary
+                                td.text-right
+                                    span#server-summary-requests 0
+                            tr
+                                td Summary errors
+                                td.text-right
+                                    span#server-summary-errors 0
+
+
+
+        section.container-fluid
+            div.row
+                div.cell-md-6.cell-lg-3#ram-chart-group
+                    div( data-role="panel" data-title-caption="RAM FILL" )
+                        div
+                            div#memory-usage
+                            div#memory-free
+
+                div.cell-md-6.cell-lg-3#ram-usage-group
+                    div( data-role="panel" data-title-caption="RAM USAGE" )
+                        div.d-block.h-100
+                            div#ram-total-wrapper.border.bd-system.p-1
+                                div#ram-total.fg-info2 0
+                                div.text-small.border-top.bd-system.mt-1 GiB
+
+                            div#memory-use.mt-4
+                            div.text-small.text-center.mt-10-minus
+                                span.fg-normal free:
+                                span#free-ram.fg-green.text-bold.ml-1.mr-1.enlarge-4
+                                span GiB
+
+                                span.ml-1.fg-normal used:
+                                span#used-ram.fg-warning.text-bold.ml-1.mr-1.enlarge-4
+                                span GiB
+
+                div.cell-md-6.cell-lg-3#cpu-usage-group
+                    div( data-role="panel" data-title-caption="CPU <span id='cpu-threads' class='fg-info2'></span> TH'S" )
+                        div.d-block.h-100
+                            div#cpu-load(style="height: 116px")
+                            div#cpu-load-all
+
+                div.cell-md-6.cell-lg-3#cpu-load-group
+                    div( data-role="panel" data-title-caption="CPU LOAD" )
+                        div.d-block.h-100
+                            div#cpu-cores-count.border.bd-system.p-1
+                                div#cpu-cores.fg-info2 0
+                                div.text-small.border-top.bd-system.mt-1 cores
+                            div#cpu-temp.border.bd-system.p-1
+                                div#cpu-temp-avg
+                                div#cpu-temp-max.border-top.bd-system
+
+                            div#cpu-use.mt-4
+
+                            div.text-small.text-center.mt-12-minus
+                                span Load average:
+                                span.ml-1#loadavg 0 0 0
+
+                            div.text-small.text-center.mt-1
+                                span Temp:
+                                span#cpu-temp-main.ml-1.text-bold 0
+                                span#cpu-temp-cores.ml-1.reduce-1 0
 
         script.
             globalThis.config = !{clientConfig}
+            globalThis.dateFormat = !{dateFormat}
+            globalThis.darkMode = false
+            globalThis.chartLineColor = darkMode ? '#3c424b' : "#e5e5e5"
+            globalThis.chartLabelColor = darkMode ? "#fff" : "#000"
+            globalThis.chartBackground = darkMode ? "#22272e" : "#fff"
+            globalThis.chartBorder = darkMode ? "#22272e" : "#fafbfc"
+
 
         script(src='/vendor/metro4/js/metro.js')
         script(src='/vendor/chart/chart.js')
+        script(src='/js/charts.js')
         script(src='/js/console.js')
         script(src='/js/utils.js')
         script(src='/js/websocket.js')
         script(src='/js/metro.conf.js')
+        script(src='/js/platform.js')
+        script(src='/js/node-health.js')
+        script(src='/js/memory.js')
+        script(src='/js/cpu.js')
+        script(src='/js/ledger-info.js')
+        script(src='/js/sync-state.js')
+        script(src='/js/node-connections.js')
+        script(src='/js/node-counters.js')

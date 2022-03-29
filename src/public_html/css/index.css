@@ -1,0 +1,429 @@
+:root {
+  --body-background: #f6f8fa;
+  --color-text: #24292e;
+  --color-text-inverse: #fff;
+  --color-border: #e1e4e8;
+  --color-panel: #fff;
+  --color-panel-second: #f8f8f8;
+  --color-panel-title: #24292e;
+  --color-accent: #000;
+  --color-neutral: #adbaa9;
+  --color-success: #7dc37b;
+  --color-warning: #ff8330;
+  --color-alert: #ea0b0b;
+  --color-alert-soft: #ff6969;
+  --color-info: rgba(27, 161, 226, 0.56);
+  --color-info3: #a368ff;
+  --color-yellow: #ffdb10;
+  --color-white: #fff;
+  --color-gray: #b6b6b6;
+  --color-active: #24292e;
+  --color-stop: #24292e;
+  --color-inactive: #b6b6b6;
+}
+.bd-system {
+  border-color: var(--color-border);
+}
+.label-normal {
+  color: var(--color-text);
+}
+.label-alert {
+  color: var(--color-alert);
+}
+.label-warning {
+  color: var(--color-warning);
+}
+.label-success {
+  color: var(--color-success);
+}
+.bg-alert {
+  background-color: var(--color-alert) !important;
+}
+.bg-info {
+  background-color: var(--color-info) !important;
+}
+.bg-warning {
+  background-color: var(--color-warning) !important;
+}
+.bg-success {
+  background-color: var(--color-success) !important;
+}
+.fg-alert {
+  color: var(--color-alert) !important;
+}
+.fg-info {
+  color: var(--color-info) !important;
+}
+.fg-warning {
+  color: var(--color-warning) !important;
+}
+.fg-success {
+  color: var(--color-success) !important;
+}
+.fg-accent {
+  color: var(--color-accent) !important;
+}
+.bg-alert,
+.bg-info,
+.bg-warning,
+.bg-success {
+  color: var(--color-white) !important;
+}
+.bg-alert *,
+.bg-info *,
+.bg-warning *,
+.bg-success * {
+  color: var(--color-white) !important;
+}
+body {
+  background-color: var(--body-background);
+}
+.big-value,
+.big-value-2 {
+  font-size: 24px;
+  color: var(--color-info);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+.big-value .sub-value,
+.big-value-2 .sub-value {
+  color: var(--color-text);
+  font-size: 0.5em;
+}
+.big-value-2 {
+  font-size: 18px;
+  color: var(--color-text);
+  font-weight: 600;
+}
+.big-value-3 {
+  font-size: 14px;
+  color: var(--color-info3);
+  font-weight: 500;
+}
+.small-value {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text);
+}
+.panel {
+  height: 100%;
+  background: var(--color-panel);
+  color: var(--color-text);
+  border-color: var(--color-border) !important;
+  border: 1px solid;
+  padding: 0 10px;
+}
+.panel .panel-title {
+  border-bottom: 1px solid var(--color-border);
+  text-align: center;
+  color: var(--color-panel-title);
+  font-size: 12px;
+  font-weight: bold;
+}
+.panel .panel-content {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.panel .panel-content > div {
+  width: 100%;
+}
+.panel.disabled {
+  opacity: 0.5;
+}
+*.alert,
+*.warning,
+*.catchup,
+*.success,
+*.soft-alert,
+* .health-alert,
+* .exp-alert {
+  color: var(--color-white) !important;
+}
+*.alert *,
+*.warning *,
+*.catchup *,
+*.success *,
+*.soft-alert *,
+* .health-alert *,
+* .exp-alert * {
+  color: var(--color-white) !important;
+  background-color: transparent!important;
+}
+*.alert,
+* .health-alert {
+  background: var(--color-alert) !important;
+}
+*.soft-alert {
+  background: var(--color-alert-soft) !important;
+}
+*.exp-alert {
+  background: var(--color-info3) !important;
+}
+*.yellow-warning {
+  background: var(--color-yellow) !important;
+  color: var(--color-text) !important;
+}
+*.warning {
+  background: var(--color-warning) !important;
+}
+*.catchup {
+  background: var(--color-info) !important;
+}
+*.success {
+  background: var(--color-success) !important;
+}
+.info-table tr:not(:last-child) {
+  border-bottom: 1px solid;
+  border-color: var(--color-border);
+}
+.info-table tbody td {
+  padding: 2px 0;
+  font-size: 10px;
+}
+.info-table tbody td:nth-child(2) {
+  color: var(--color-accent);
+}
+.text-indicators {
+  background-color: var(--color-panel-second);
+  height: 140px;
+}
+.text-indicators > div {
+  line-height: 1;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+.peers-title,
+.response-title,
+.tx-title,
+.rx-title,
+.process-mem-title,
+.total-mem-title,
+.cpu-title {
+  position: absolute;
+  color: var(--color-accent);
+  top: 8px;
+  left: 4px;
+  z-index: 2;
+  font-size: 11px;
+}
+#cpu-temp {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 28px;
+  border-radius: 6px;
+}
+#cpu-temp #cpu-temp-avg,
+#cpu-temp #cpu-temp-max {
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+#cpu-temp #cpu-temp-max {
+  font-size: 0.5em;
+  margin-top: 4px;
+  padding-top: 4px;
+}
+.cpu-title,
+.process-mem-title,
+.tx-title {
+  top: 0;
+}
+.response-title {
+  top: 78px;
+}
+.rx-title {
+  top: 70px;
+}
+.total-mem-title {
+  top: 60px;
+}
+.peers-title,
+.response-title {
+  left: 10px;
+}
+.peers-count,
+.tx-count,
+.rx-count,
+.response-count {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: var(--color-panel);
+  border: 2px solid rgba(189, 219, 255, 0.71);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  font-size: 12px;
+  font-weight: 700;
+  opacity: 0.65;
+  color: var(--color-accent);
+}
+.tx-count,
+.rx-count,
+.response-count {
+  flex-flow: column;
+  align-items: center;
+  justify-content: space-around;
+  line-height: 1;
+}
+.tx-count {
+  top: 0;
+}
+.rx-count {
+  top: 70px;
+}
+.tx-chart,
+.rx-chart {
+  min-height: 65px;
+}
+.response-count {
+  top: 80px;
+}
+.height-table {
+  margin-top: 8px;
+}
+.height-table td:nth-child(1) {
+  width: 40px;
+}
+.height-table td:nth-child(2) {
+  text-align: right;
+}
+.height-table td:nth-child(2) span {
+  font-weight: bold;
+}
+#cpu-temp,
+#cpu-cores-count,
+#ram-total-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 6px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  z-index: 1;
+}
+#cpu-cores-count {
+  left: 0;
+  right: auto;
+}
+#cpu-cores-count #cpu-cores,
+#cpu-cores-count #cpu-threads {
+  line-height: 1;
+  width: 70%;
+  text-align: center;
+}
+#cpu-cores-count #cpu-threads {
+  font-size: 0.5em;
+}
+#cpu-threads {
+  font-size: 1.6em;
+  color: var(--color-info);
+}
+#ram-total-wrapper #ram-total {
+  line-height: 1;
+}
+@keyframes catchup {
+  0% {
+    top: 100%;
+  }
+  100% {
+    top: 0;
+  }
+}
+@keyframes flash-bg {
+  0% {
+    background-color: var(--color-panel);
+  }
+  100% {
+    background-color: var(--color-alert);
+    color: var(--color-white) !important;
+  }
+}
+@media screen and (min-width: 991px) and (max-width: 1452px) {
+  .big-value {
+    font-size: 20px;
+  }
+}
+:not(.light-theme):root {
+  --body-background: #1e2228;
+  --color-text: #adbaa9;
+  --color-text-inverse: #24292e;
+  --color-border: #444c56;
+  --color-panel: #22272e;
+  --color-panel-second: #1b2125;
+  --color-panel-title: #ff8330;
+  --color-accent: #fff;
+  --color-neutral: #b6b6b6;
+  --color-success: #7dc37b;
+  --color-warning: #ff8330;
+  --color-alert: #ea0b0b;
+  --color-info: rgba(27, 161, 226, 0.56);
+  --color-info2: #4db5ff;
+  --color-yellow: #ffdb10;
+  --color-white: #fff;
+  --color-gray: #b6b6b6;
+  --color-active: #4db5ff;
+  --color-stop: #24292e;
+  --color-inactive: #4b4b4b;
+}
+html:not(.light-theme) .big-value {
+  color: var(--color-info2);
+}
+html:not(.light-theme) .big-value-2,
+html:not(.light-theme) .cores-count,
+html:not(.light-theme) .cpu-load,
+html:not(.light-theme) .cpu-temp,
+html:not(.light-theme) .total-mem,
+html:not(.light-theme) .used-mem,
+html:not(.light-theme) .free-mem {
+  color: var(--color-accent);
+}
+html:not(.light-theme) .height-table {
+  border-color: var(--color-border) !important;
+}
+html:not(.light-theme) .height-table * {
+  border-color: var(--color-border) !important;
+}
+html:not(.light-theme) .max-block,
+html:not(.light-theme) .max-unvalidated,
+html:not(.light-theme) .explorer-height,
+html:not(.light-theme) .block-producer,
+html:not(.light-theme) .snark-worker,
+html:not(.light-theme) .snark-worker-fee {
+  color: var(--color-accent);
+}
+html:not(.light-theme) .yellow-warning {
+  color: var(--color-text-inverse) !important;
+}
+html:not(.light-theme) .countdown .digit {
+  color: var(--color-accent);
+}
+html:not(.light-theme) .text-indicators {
+  background-color: var(--color-panel-second);
+  color: var(--color-text);
+}
+html:not(.light-theme) .node-load-status,
+html:not(.light-theme) .node-https-status {
+  color: var(--color-text);
+}
+html:not(.light-theme) .is-node > .panel.disabled {
+  opacity: 0.2;
+}
+/*# sourceMappingURL=index.css.map */

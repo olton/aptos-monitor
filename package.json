@@ -29,6 +29,7 @@
         "node-fetch": "^3.2.3",
         "pug": "^3.0.2",
         "serve-favicon": "^2.5.0",
+        "systeminformation": "^5.11.9",
         "ws": "^8.5.0"
     },
     "staticFiles": {},

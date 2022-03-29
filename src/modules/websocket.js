@@ -1,5 +1,6 @@
-import {WebSocketServer} from "ws";
+import {WebSocketServer, WebSocket} from "ws";
 import {debug, info} from "./logging.js";
+import {getConnections, getCounters, getSyncState} from "./metrics";
 
 export const websocket = (server) => {
     globalThis.wss = new WebSocketServer({ server })
@@ -16,8 +17,40 @@ export const websocket = (server) => {
         ws.on('message', async (msg) => {
             const {channel, data} = JSON.parse(msg)
             switch (channel) {
-                case "ping": {
-                    response(ws, "pong")
+                case "platform": {
+                    response(ws, channel, {platform: cache.platform, time: cache.time, cpu: cache.cpu})
+                    break
+                }
+                case "cpu": {
+                    response(ws, channel, {temp: cache.cpuTemp, load: cache.cpuLoad})
+                    break
+                }
+                case "memory": {
+                    response(ws, channel, {memory: cache.mem})
+                    break
+                }
+                case "net": {
+                    response(ws, channel, {stat: cache.netStat, conn: cache.netConn})
+                    break
+                }
+                case "health": {
+                    response(ws, channel, cache.health)
+                    break
+                }
+                case "ledger": {
+                    response(ws, channel, cache.ledger)
+                    break
+                }
+                case "sync": {
+                    response(ws, channel, getSyncState(cache.metrics))
+                    break
+                }
+                case "connections": {
+                    response(ws, channel, getConnections(cache.metrics))
+                    break
+                }
+                case "counters": {
+                    response(ws, channel, getCounters(cache.metrics))
                     break
                 }
             }
@@ -36,7 +69,7 @@ export const response = (ws, channel, data) => {
     }))
 }
 
-export const sendBroadcast = (data) => {
+export const broadcast = (data) => {
     wss.clients.forEach(function each(client) {
         if (client.readyState === WebSocket.OPEN) {
             client.send(JSON.stringify(data))

@@ -33,7 +33,7 @@ const connect = () => {
     }
 
     ws.onopen = event => {
-        log('Connected to Minataur');
+        log('Connected to Aptos Node Monitor');
     }
 }
 
@@ -44,12 +44,62 @@ const wsMessageController = (ws, response) => {
         return
     }
 
+    const requestData = ws => {
+        if (isOpen(ws)) {
+            ws.send(JSON.stringify({channel: 'platform'}))
+            ws.send(JSON.stringify({channel: 'cpu'}))
+            ws.send(JSON.stringify({channel: 'memory'}))
+            ws.send(JSON.stringify({channel: 'net'}))
+            ws.send(JSON.stringify({channel: 'health'}))
+            ws.send(JSON.stringify({channel: 'ledger'}))
+            ws.send(JSON.stringify({channel: 'sync'}))
+            ws.send(JSON.stringify({channel: 'connections'}))
+            ws.send(JSON.stringify({channel: 'counters'}))
+        }
+
+        setTimeout(requestData, 2000, ws)
+    }
+
     switch(channel) {
         case 'welcome': {
+            requestData(ws)
             break
         }
-        case 'ping': {
-            ws.send(JSON.stringify({channel: 'pong'}))
+        case 'platform': {
+            updatePlatform(data)
+            break
+        }
+        case 'cpu': {
+            updateCpuLoad(data.load)
+            updateCpuTemp(data.temp)
+            break
+        }
+        case 'memory': {
+            updateMemory(data)
+            break
+        }
+        case 'net': {
+            updateNet(data)
+            break
+        }
+        case 'health': {
+            updateNodeHealth(data)
+            break
+        }
+        case 'ledger': {
+            updateLedgerInfo(data)
+            break
+        }
+        case 'sync': {
+            updateSyncState(data)
+            break
+        }
+        case 'connections': {
+            updateNodeConnections(data)
+            break
+        }
+        case 'counters': {
+            updateCounters(data)
             break
         }
     }
@@ -57,3 +107,12 @@ const wsMessageController = (ws, response) => {
 
 
 connect()
+
+
+const updateCpu = data => {
+    log("CPU", data)
+}
+
+const updateNet = data => {
+    // log("Net", data)
+}

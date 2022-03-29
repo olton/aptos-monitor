@@ -17,12 +17,14 @@ const route = () => {
     app.set('view engine', 'pug')
 
     const clientConfig = JSON.stringify(config.client)
+    const dateFormat = JSON.stringify(config['date-format'])
 
     app.get('/', async (req, res) => {
         res.render('index', {
             title: `Aptos Monitor v${version}`,
             version,
-            clientConfig
+            clientConfig,
+            dateFormat
         })
     })
 }
