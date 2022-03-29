@@ -1,6 +1,7 @@
 import {HEALTH_ENDPOINT, LEDGER_ENDPOINT} from "../helpers/consts.js";
 import fetch from "node-fetch";
 import {alert} from "./logging.js";
+import {getConnections, getCounters, getSyncState} from "./metrics.js";
 
 export const processNodeHealth = async () => {
     const link = `${config.aptos.api}${HEALTH_ENDPOINT}`
@@ -33,9 +34,12 @@ export const processMetrics = async () => {
     try {
         const response = await fetch(link);
         globalThis.cache.metrics = response.ok ? await response.text() : ""
+        globalThis.cache.sync = getSyncState(globalThis.cache.metrics)
+        globalThis.cache.counters = getCounters(globalThis.cache.metrics)
+        globalThis.cache.connections = getConnections(globalThis.cache.metrics)
     } catch (e) {
         alert(e.message, e.stack)
     }
 
-    setTimeout(processMetrics, 2000)
+    setTimeout(processMetrics, 5000)
 }

@@ -42,15 +42,15 @@ export const websocket = (server) => {
                     break
                 }
                 case "sync": {
-                    response(ws, channel, getSyncState(cache.metrics))
+                    response(ws, channel, cache.sync)
                     break
                 }
                 case "connections": {
-                    response(ws, channel, getConnections(cache.metrics))
+                    response(ws, channel, cache.connections)
                     break
                 }
                 case "counters": {
-                    response(ws, channel, getCounters(cache.metrics))
+                    response(ws, channel, cache.counters)
                     break
                 }
             }
