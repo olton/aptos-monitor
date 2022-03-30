@@ -16,9 +16,19 @@ export const parseMetrics = (data = "") => {
         }
 
         // +
+        if (l.includes("aptos_state_sync_reconfig_count")) {
+            sync.state_sync_reconfig_count = val
+        }
+
+        // +
+        if (l.includes("aptos_state_sync_timeout_total")) {
+            sync.state_sync_timeout_total = val
+        }
+
+        // +
         if (l.includes("aptos_connections")) {
-            if (l.includes("inbound")) connections.inbound = val
-            if (l.includes("outbound")) connections.outbound = val
+            if (l.includes("inbound")) counters.connections_inbound = val
+            if (l.includes("outbound")) counters.connections_outbound = val
         }
 
         // +
@@ -36,6 +46,7 @@ export const parseMetrics = (data = "") => {
             counters.streaming_service_global_summary_error = val
         }
 
+        // +
         if (l.includes("aptos_data_client_error_responses")) {
             let val = l.split(" ")[1]
             if (l.includes("TOTAL_COUNT")) {
@@ -67,19 +78,16 @@ export const parseMetrics = (data = "") => {
             if (l.includes("type=\"total_bytes\"")) counters.metrics_total_bytes = val
         }
 
+        // +
         if (l.includes("aptos_network_direct_send_messages")) {
             if (l.includes("received")) counters.network_direct_send_messages_received = val
             if (l.includes("sent")) counters.network_direct_send_messages_sent = val
         }
 
+        // +
         if (l.includes("aptos_network_direct_send_bytes")) {
             if (l.includes("received")) counters.network_direct_send_bytes_received = val
             if (l.includes("sent")) counters.network_direct_send_bytes_sent = val
-        }
-
-        if (l.includes("aptos_network_pending_health_check_events")) {
-            if (l.includes("dequeued")) counters.network_pending_health_check_events_dequeued = val
-            if (l.includes("enqueued")) counters.network_pending_health_check_events_enqueued = val
         }
 
         if (l.includes("aptos_network_rpc_bytes")) {
@@ -98,25 +106,22 @@ export const parseMetrics = (data = "") => {
         }
 
         if (l.includes("aptos_secure_net_events")) {
-            if (l.includes("connect")) counters.aptos_secure_net_events_connect = val
-            if (l.includes("read")) counters.aptos_secure_net_events_read = val
+            if (l.includes("connect")) counters.secure_net_events_connect = val
+            if (l.includes("read")) counters.secure_net_events_read = val
         }
 
         if (l.includes("aptos_simple_onchain_discovery_counts")) {
             counters.simple_onchain_discovery_counts = val
         }
 
+        if (l.includes("aptos_network_pending_health_check_events")) {
+            if (l.includes("dequeued")) counters.network_pending_health_check_events_dequeued = val
+            if (l.includes("enqueued")) counters.network_pending_health_check_events_enqueued = val
+        }
+
         if (l.includes("aptos_state_sync_pending_network_events")) {
             if (l.includes("dequeued")) counters.state_sync_pending_network_events_dequeued = val
             if (l.includes("enqueued")) counters.state_sync_pending_network_events_enqueued = val
-        }
-
-        if (l.includes("aptos_state_sync_reconfig_count")) {
-            counters.state_sync_reconfig_count = val
-        }
-
-        if (l.includes("aptos_state_sync_timeout_total")) {
-            counters.state_sync_timeout_total = val
         }
 
         if (l.includes("aptos_storage_committed_txns")) {

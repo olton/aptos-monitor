@@ -1,10 +1,12 @@
 
 const updateCounters = data => {
-    let {sent_requests_total, sent_requests_summary_server, streaming_service_global_summary_error} = data
+    let {sent_requests_total, sent_requests_summary_server, streaming_service_global_summary_error, error_responses_total, error_responses_storage_server_summary} = data
 
     $("#sent-requests-total").text(sent_requests_total)
     $("#server-summary-requests").text(sent_requests_summary_server)
     $("#server-summary-errors").text(streaming_service_global_summary_error)
+    $("#error_responses_total").text(error_responses_total)
+    $("#error_responses_storage_server_summary").text(error_responses_storage_server_summary)
 }
 
 const updateCountersStorageLedger = data => {
@@ -40,4 +42,23 @@ const updateCountersSendData = data => {
     $("#network_direct_send_messages_sent").text(network_direct_send_messages_sent)
     $("#network_direct_send_bytes_received").text(network_direct_send_bytes_received)
     $("#network_direct_send_bytes_sent").text(network_direct_send_bytes_sent)
+}
+
+const updateCountersConnections = data => {
+    const {connections_inbound, connections_outbound, secure_net_events_connect, secure_net_events_read} = data
+
+    $("#conn-inbound").text(connections_inbound)
+    $("#conn-outbound").text(connections_outbound)
+    $("#secure_net_events_connect").text(secure_net_events_connect)
+    $("#secure_net_events_read").text(secure_net_events_read)
+}
+
+const updateSyncState = data => {
+    const {committed, highest, synced, target, state_sync_reconfig_count, state_sync_timeout_total} = data
+    $("#sync-committed").text(committed)
+    $("#sync-highest").text(highest)
+    $("#sync-synced").text(synced)
+    $("#sync-target").text(target)
+    $("#state_sync_reconfig_count").text(state_sync_reconfig_count)
+    $("#state_sync_timeout_total").text(state_sync_timeout_total)
 }

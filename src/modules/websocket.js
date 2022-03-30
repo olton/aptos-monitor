@@ -44,10 +44,6 @@ export const websocket = (server) => {
                     response(ws, channel, cache.metrics.sync)
                     break
                 }
-                case "connections": {
-                    response(ws, channel, cache.metrics.connections)
-                    break
-                }
                 case "counters": {
                     response(ws, channel, cache.metrics.counters)
                     break

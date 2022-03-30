@@ -86,6 +86,14 @@ html.light-theme.scrollbar-type-1.sb-darkViolet
                                 td Target
                                 td.text-right
                                     span#sync-target 0
+                            tr
+                                td ReConfig Count
+                                td.text-right
+                                    span#state_sync_reconfig_count 0
+                            tr
+                                td Timeout Total
+                                td.text-right
+                                    span#state_sync_timeout_total 0
 
                 div.cell-md-6.cell-lg-3#node-connections
                     div( data-role="panel" data-title-caption="CONNECTIONS" )
@@ -98,9 +106,17 @@ html.light-theme.scrollbar-type-1.sb-darkViolet
                                 td Outbound
                                 td.text-right
                                     span#conn-outbound 0
+                            tr
+                                td Events Connected
+                                td.text-right
+                                    span#secure_net_events_connect 0
+                            tr
+                                td Events Read
+                                td.text-right
+                                    span#secure_net_events_read 0
 
                 div.cell-md-6.cell-lg-3
-                    div( data-role="panel" data-title-caption="REQUESTS COUNTERS" )
+                    div( data-role="panel" data-title-caption="REQUESTS & RESPONSES" )
                         table.table.compact.cell-border
                             tr
                                 td.no-wrap Sent Requests Total
@@ -114,6 +130,14 @@ html.light-theme.scrollbar-type-1.sb-darkViolet
                                 td.no-wrap Global Summary Errors
                                 td.text-right
                                     span#server-summary-errors 0
+                            tr
+                                td.no-wrap Error Responses Total
+                                td.text-right
+                                    span#error_responses_total 0
+                            tr
+                                td.no-wrap Error Responses Server
+                                td.text-right
+                                    span#error_responses_storage_server_summary 0
 
                 div.cell-md-6.cell-lg-3
                     div( data-role="panel" data-title-caption="LEDGER STORAGE COUNTERS" )
@@ -267,6 +291,4 @@ html.light-theme.scrollbar-type-1.sb-darkViolet
         script(src='/js/memory.js')
         script(src='/js/cpu.js')
         script(src='/js/ledger-info.js')
-        script(src='/js/sync-state.js')
-        script(src='/js/node-connections.js')
-        script(src='/js/node-counters.js')
+        script(src='/js/metrics.js')

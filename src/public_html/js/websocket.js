@@ -53,7 +53,6 @@ const wsMessageController = (ws, response) => {
             ws.send(JSON.stringify({channel: 'health'}))
             ws.send(JSON.stringify({channel: 'ledger'}))
             ws.send(JSON.stringify({channel: 'sync'}))
-            ws.send(JSON.stringify({channel: 'connections'}))
             ws.send(JSON.stringify({channel: 'counters'}))
         }
 
@@ -94,16 +93,13 @@ const wsMessageController = (ws, response) => {
             updateSyncState(data)
             break
         }
-        case 'connections': {
-            updateNodeConnections(data)
-            break
-        }
         case 'counters': {
             updateCounters(data)
             updateCountersStorageLedger(data)
             updateCountersJellyfish(data)
             updateCountersMetrics(data)
             updateCountersSendData(data)
+            updateCountersConnections(data)
             break
         }
     }
