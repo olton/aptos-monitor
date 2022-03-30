@@ -70,20 +70,20 @@ const updateSyncState = data => {
 const updateRpcBytes = data => {
     let {network_rpc_bytes_received_request, network_rpc_bytes_received_response, network_rpc_bytes_sent_request, network_rpc_bytes_sent_response} = data
 
-    $("#network_rpc_bytes_received_request").text(network_rpc_bytes_received_request)
-    $("#network_rpc_bytes_received_response").text(network_rpc_bytes_received_response)
-    $("#network_rpc_bytes_sent_request").text(network_rpc_bytes_sent_request)
-    $("#network_rpc_bytes_sent_response").text(network_rpc_bytes_sent_response)
+    $("#network_rpc_bytes_received_request").text(n2f(network_rpc_bytes_received_request))
+    $("#network_rpc_bytes_received_response").text(n2f(network_rpc_bytes_received_response))
+    $("#network_rpc_bytes_sent_request").text(n2f(network_rpc_bytes_sent_request))
+    $("#network_rpc_bytes_sent_response").text(n2f(network_rpc_bytes_sent_response))
 }
 
 const updateRpcMessages = data => {
     let {network_rpc_messages_failed_request, network_rpc_messages_received_request, network_rpc_messages_received_response, network_rpc_messages_sent_request, network_rpc_messages_sent_response} = data
 
-    $("#network_rpc_messages_failed_request").text(network_rpc_messages_failed_request)
-    $("#network_rpc_messages_received_request").text(network_rpc_messages_received_request)
-    $("#network_rpc_messages_received_response").text(network_rpc_messages_received_response)
-    $("#network_rpc_messages_sent_request").text(network_rpc_messages_sent_request)
-    $("#network_rpc_messages_sent_response").text(network_rpc_messages_sent_response)
+    $("#network_rpc_messages_failed_request").text(n2f(network_rpc_messages_failed_request))
+    $("#network_rpc_messages_received_request").text(n2f(network_rpc_messages_received_request))
+    $("#network_rpc_messages_received_response").text(n2f(network_rpc_messages_received_response))
+    $("#network_rpc_messages_sent_request").text(n2f(network_rpc_messages_sent_request))
+    $("#network_rpc_messages_sent_response").text(n2f(network_rpc_messages_sent_response))
 }
 
 const updateTransactions = data => {
@@ -97,13 +97,13 @@ const updateTransactions = data => {
         vm_txn_gas_usage_count
     } = data
 
-    $("#storage_committed_txns").text(storage_committed_txns)
-    $("#vm_system_transactions_executed").text(vm_system_transactions_executed)
-    $("#vm_user_transactions_executed").text(vm_user_transactions_executed)
-    $("#vm_num_txns_per_block_sum").text(vm_num_txns_per_block_sum)
-    $("#vm_num_txns_per_block_count").text(vm_num_txns_per_block_count)
-    $("#vm_txn_gas_usage_sum").text(vm_txn_gas_usage_sum)
-    $("#vm_txn_gas_usage_count").text(vm_txn_gas_usage_count)
+    $("#storage_committed_txns").text(n2f(storage_committed_txns))
+    $("#vm_system_transactions_executed").text(n2f(vm_system_transactions_executed))
+    $("#vm_user_transactions_executed").text(n2f(vm_user_transactions_executed))
+    $("#vm_num_txns_per_block_sum").text(n2f(vm_num_txns_per_block_sum))
+    $("#vm_num_txns_per_block_count").text(n2f(vm_num_txns_per_block_count))
+    $("#vm_txn_gas_usage_sum").text(n2f(vm_txn_gas_usage_sum))
+    $("#vm_txn_gas_usage_count").text(n2f(vm_txn_gas_usage_count))
 }
 
 const updateQueues = data => {
@@ -116,12 +116,12 @@ const updateQueues = data => {
         storage_service_server_pending_network_events_enqueued
     } = data
 
-    $("#network_pending_health_check_events_dequeued").text(network_pending_health_check_events_dequeued)
-    $("#network_pending_health_check_events_enqueued").text(network_pending_health_check_events_enqueued)
-    $("#state_sync_pending_network_events_dequeued").text(state_sync_pending_network_events_dequeued)
-    $("#state_sync_pending_network_events_enqueued").text(state_sync_pending_network_events_enqueued)
-    $("#storage_service_server_pending_network_events_dequeued").text(storage_service_server_pending_network_events_dequeued)
-    $("#storage_service_server_pending_network_events_enqueued").text(storage_service_server_pending_network_events_enqueued)
+    $("#network_pending_health_check_events_dequeued").text(n2f(network_pending_health_check_events_dequeued))
+    $("#network_pending_health_check_events_enqueued").text(n2f(network_pending_health_check_events_enqueued))
+    $("#state_sync_pending_network_events_dequeued").text(n2f(state_sync_pending_network_events_dequeued))
+    $("#state_sync_pending_network_events_enqueued").text(n2f(state_sync_pending_network_events_enqueued))
+    $("#storage_service_server_pending_network_events_dequeued").text(n2f(storage_service_server_pending_network_events_dequeued))
+    $("#storage_service_server_pending_network_events_enqueued").text(n2f(storage_service_server_pending_network_events_enqueued))
 }
 
 const updateMetric = data => {
