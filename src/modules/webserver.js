@@ -49,12 +49,12 @@ export const runWebServer = () => {
 
     route()
 
-    httpWebserver.listen(80, () => {
+    httpWebserver.listen(config.server.port, () => {
         info(`Aptos Monitor running on http`)
     })
 
     if (ssl) {
-        httpsWebserver.listen(443, () => {
+        httpsWebserver.listen(config.server.ssl.port || config.server.port, () => {
             info(`Aptos Monitor running on https`)
         })
     }

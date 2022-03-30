@@ -85,3 +85,23 @@ const updateRpcMessages = data => {
     $("#network_rpc_messages_sent_request").text(network_rpc_messages_sent_request)
     $("#network_rpc_messages_sent_response").text(network_rpc_messages_sent_response)
 }
+
+const updateTransactions = data => {
+    let {
+        storage_committed_txns,
+        vm_system_transactions_executed,
+        vm_user_transactions_executed,
+        vm_num_txns_per_block_sum,
+        vm_num_txns_per_block_count,
+        vm_txn_gas_usage_sum,
+        vm_txn_gas_usage_count
+    } = data
+
+    $("#storage_committed_txns").text(storage_committed_txns)
+    $("#vm_system_transactions_executed").text(vm_system_transactions_executed)
+    $("#vm_user_transactions_executed").text(vm_user_transactions_executed)
+    $("#vm_num_txns_per_block_sum").text(vm_num_txns_per_block_sum)
+    $("#vm_num_txns_per_block_count").text(vm_num_txns_per_block_count)
+    $("#vm_txn_gas_usage_sum").text(vm_txn_gas_usage_sum)
+    $("#vm_txn_gas_usage_count").text(vm_txn_gas_usage_count)
+}

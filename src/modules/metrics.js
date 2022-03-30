@@ -129,8 +129,9 @@ export const parseMetrics = (data = "") => {
             if (l.includes("enqueued")) counters.state_sync_pending_network_events_enqueued = val
         }
 
-        if (l.includes("aptos_storage_committed_txns")) {
-            counters.storage_committed_txns = val
+        if (l.includes("aptos_storage_service_server_pending_network_events")) {
+            if (l.includes("dequeued")) counters.storage_service_server_pending_network_events_dequeued = val
+            if (l.includes("enqueued")) counters.storage_service_server_pending_network_events_enqueued = val
         }
 
         if (l.includes("aptos_storage_latest_account_count")) {
@@ -158,11 +159,6 @@ export const parseMetrics = (data = "") => {
             if (l.includes("stale_state_nodes")) counters.storage_ledger_stale_state_nodes = val
         }
 
-        if (l.includes("aptos_storage_service_server_pending_network_events")) {
-            if (l.includes("dequeued")) counters.storage_service_server_pending_network_events_dequeued = val
-            if (l.includes("enqueued")) counters.storage_service_server_pending_network_events_enqueued = val
-        }
-
         if (l.includes("aptos_storage_service_server_requests_received")) {
             counters.storage_service_server_requests_received = val
         }
@@ -177,6 +173,10 @@ export const parseMetrics = (data = "") => {
 
         if (l.includes("aptos_struct_log_processed_count")) {
             counters.struct_log_processed_count = val
+        }
+
+        if (l.includes("aptos_storage_committed_txns")) {
+            counters.storage_committed_txns = val
         }
 
         if (l.includes("aptos_vm_system_transactions_executed")) {
