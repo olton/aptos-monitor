@@ -100,18 +100,14 @@ const wsMessageController = (ws, response) => {
             updateCountersMetrics(data)
             updateCountersSendData(data)
             updateCountersConnections(data)
+            updateRpcBytes(data)
+            updateRpcMessages(data)
             break
         }
     }
 }
 
-
 connect()
-
-
-const updateCpu = data => {
-    log("CPU", data)
-}
 
 const updateNet = data => {
     // log("Net", data)

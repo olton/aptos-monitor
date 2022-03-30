@@ -28,11 +28,12 @@ const updateCountersJellyfish = data => {
 }
 
 const updateCountersMetrics = data => {
-    let {metrics_families_over_1000, metrics_total, metrics_total_bytes} = data
+    let {metrics_families_over_1000, metrics_total, metrics_total_bytes, simple_onchain_discovery_counts} = data
 
     $("#metrics_families_over_1000").text(metrics_families_over_1000)
     $("#metrics_total").text(metrics_total)
     $("#metrics_total_bytes").text(metrics_total_bytes)
+    $("#simple_onchain_discovery_counts").text(simple_onchain_discovery_counts)
 }
 
 const updateCountersSendData = data => {
@@ -45,20 +46,42 @@ const updateCountersSendData = data => {
 }
 
 const updateCountersConnections = data => {
-    const {connections_inbound, connections_outbound, secure_net_events_connect, secure_net_events_read} = data
+    let {connections_inbound, connections_outbound, secure_net_events_connect, secure_net_events_read, shared_mempool_events_lost_peer, shared_mempool_events_new_peer} = data
 
     $("#conn-inbound").text(connections_inbound)
     $("#conn-outbound").text(connections_outbound)
     $("#secure_net_events_connect").text(secure_net_events_connect)
     $("#secure_net_events_read").text(secure_net_events_read)
+    $("#shared_mempool_events_lost_peer").text(shared_mempool_events_lost_peer)
+    $("#shared_mempool_events_new_peer").text(shared_mempool_events_new_peer)
 }
 
 const updateSyncState = data => {
-    const {committed, highest, synced, target, state_sync_reconfig_count, state_sync_timeout_total} = data
+    let {committed, highest, synced, target, state_sync_reconfig_count, state_sync_timeout_total} = data
+
     $("#sync-committed").text(committed)
     $("#sync-highest").text(highest)
     $("#sync-synced").text(synced)
     $("#sync-target").text(target)
     $("#state_sync_reconfig_count").text(state_sync_reconfig_count)
     $("#state_sync_timeout_total").text(state_sync_timeout_total)
+}
+
+const updateRpcBytes = data => {
+    let {network_rpc_bytes_received_request, network_rpc_bytes_received_response, network_rpc_bytes_sent_request, network_rpc_bytes_sent_response} = data
+
+    $("#network_rpc_bytes_received_request").text(network_rpc_bytes_received_request)
+    $("#network_rpc_bytes_received_response").text(network_rpc_bytes_received_response)
+    $("#network_rpc_bytes_sent_request").text(network_rpc_bytes_sent_request)
+    $("#network_rpc_bytes_sent_response").text(network_rpc_bytes_sent_response)
+}
+
+const updateRpcMessages = data => {
+    let {network_rpc_messages_failed_request, network_rpc_messages_received_request, network_rpc_messages_received_response, network_rpc_messages_sent_request, network_rpc_messages_sent_response} = data
+
+    $("#network_rpc_messages_failed_request").text(network_rpc_messages_failed_request)
+    $("#network_rpc_messages_received_request").text(network_rpc_messages_received_request)
+    $("#network_rpc_messages_received_response").text(network_rpc_messages_received_response)
+    $("#network_rpc_messages_sent_request").text(network_rpc_messages_sent_request)
+    $("#network_rpc_messages_sent_response").text(network_rpc_messages_sent_response)
 }

@@ -78,6 +78,11 @@ export const parseMetrics = (data = "") => {
             if (l.includes("type=\"total_bytes\"")) counters.metrics_total_bytes = val
         }
 
+        // + to Metrics
+        if (l.includes("aptos_simple_onchain_discovery_counts")) {
+            counters.simple_onchain_discovery_counts = val
+        }
+
         // +
         if (l.includes("aptos_network_direct_send_messages")) {
             if (l.includes("received")) counters.network_direct_send_messages_received = val
@@ -90,29 +95,29 @@ export const parseMetrics = (data = "") => {
             if (l.includes("sent")) counters.network_direct_send_bytes_sent = val
         }
 
+        // +
         if (l.includes("aptos_network_rpc_bytes")) {
-            if (l.includes("state=\"received\",type=\"request\"")) counters.aptos_network_rpc_bytes_received_request = val
-            if (l.includes("state=\"received\",type=\"response\"")) counters.aptos_network_rpc_bytes_received_response = val
-            if (l.includes("state=\"sent\",type=\"request\"")) counters.aptos_network_rpc_bytes_sent_request = val
-            if (l.includes("state=\"sent\",type=\"response\"")) counters.aptos_network_rpc_bytes_sent_response = val
+            if (l.includes("state=\"received\",type=\"request\"")) counters.network_rpc_bytes_received_request = val
+            if (l.includes("state=\"received\",type=\"response\"")) counters.network_rpc_bytes_received_response = val
+            if (l.includes("state=\"sent\",type=\"request\"")) counters.network_rpc_bytes_sent_request = val
+            if (l.includes("state=\"sent\",type=\"response\"")) counters.network_rpc_bytes_sent_response = val
         }
 
+        // +
         if (l.includes("aptos_network_rpc_messages")) {
-            if (l.includes("state=\"failed\",type=\"request\"")) counters.aptos_network_rpc_messages_failed_request = val
-            if (l.includes("state=\"received\",type=\"request\"")) counters.aptos_network_rpc_messages_received_request = val
-            if (l.includes("state=\"received\",type=\"response\"")) counters.aptos_network_rpc_messages_received_response = val
-            if (l.includes("state=\"sent\",type=\"request\"")) counters.aptos_network_rpc_messages_sent_request = val
-            if (l.includes("state=\"sent\",type=\"response\"")) counters.aptos_network_rpc_messages_sent_response = val
+            if (l.includes("state=\"failed\",type=\"request\"")) counters.network_rpc_messages_failed_request = val
+            if (l.includes("state=\"received\",type=\"request\"")) counters.network_rpc_messages_received_request = val
+            if (l.includes("state=\"received\",type=\"response\"")) counters.network_rpc_messages_received_response = val
+            if (l.includes("state=\"sent\",type=\"request\"")) counters.network_rpc_messages_sent_request = val
+            if (l.includes("state=\"sent\",type=\"response\"")) counters.network_rpc_messages_sent_response = val
         }
 
+        // +
         if (l.includes("aptos_secure_net_events")) {
             if (l.includes("connect")) counters.secure_net_events_connect = val
             if (l.includes("read")) counters.secure_net_events_read = val
         }
 
-        if (l.includes("aptos_simple_onchain_discovery_counts")) {
-            counters.simple_onchain_discovery_counts = val
-        }
 
         if (l.includes("aptos_network_pending_health_check_events")) {
             if (l.includes("dequeued")) counters.network_pending_health_check_events_dequeued = val
@@ -203,6 +208,7 @@ export const parseMetrics = (data = "") => {
             if (l.includes("system_ttl")) counters.core_mempool_gc_event_count_system_ttl = val
         }
 
+        // + to Connections
         if (l.includes("shared_mempool_events")) {
             if (l.includes("lost_peer")) counters.shared_mempool_events_lost_peer = val
             if (l.includes("new_peer")) counters.shared_mempool_events_new_peer = val
