@@ -1,6 +1,5 @@
 import {WebSocketServer, WebSocket} from "ws";
-import {debug, info} from "./logging.js";
-import {getConnections, getCounters, getSyncState} from "./metrics";
+import {debug} from "./logging.js";
 
 export const websocket = (server) => {
     globalThis.wss = new WebSocketServer({ server })
@@ -42,15 +41,15 @@ export const websocket = (server) => {
                     break
                 }
                 case "sync": {
-                    response(ws, channel, cache.sync)
+                    response(ws, channel, cache.metrics.sync)
                     break
                 }
                 case "connections": {
-                    response(ws, channel, cache.connections)
+                    response(ws, channel, cache.metrics.connections)
                     break
                 }
                 case "counters": {
-                    response(ws, channel, cache.counters)
+                    response(ws, channel, cache.metrics.counters)
                     break
                 }
             }

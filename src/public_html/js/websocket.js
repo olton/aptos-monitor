@@ -100,6 +100,10 @@ const wsMessageController = (ws, response) => {
         }
         case 'counters': {
             updateCounters(data)
+            updateCountersStorageLedger(data)
+            updateCountersJellyfish(data)
+            updateCountersMetrics(data)
+            updateCountersSendData(data)
             break
         }
     }

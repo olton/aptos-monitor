@@ -99,21 +99,97 @@ html.light-theme.scrollbar-type-1.sb-darkViolet
                                 td.text-right
                                     span#conn-outbound 0
 
-                div.cell-md-6.cell-lg-3#node-counters
-                    div( data-role="panel" data-title-caption="COUNTERS" )
+                div.cell-md-6.cell-lg-3
+                    div( data-role="panel" data-title-caption="REQUESTS COUNTERS" )
                         table.table.compact.cell-border
                             tr
-                                td.no-wrap Sent total
+                                td.no-wrap Sent Requests Total
                                 td.text-right
                                     span#sent-requests-total 0
                             tr
-                                td Server summary
+                                td.no-wrap Requests Server Summary
                                 td.text-right
                                     span#server-summary-requests 0
                             tr
-                                td Summary errors
+                                td.no-wrap Global Summary Errors
                                 td.text-right
                                     span#server-summary-errors 0
+
+                div.cell-md-6.cell-lg-3
+                    div( data-role="panel" data-title-caption="LEDGER STORAGE COUNTERS" )
+                        table.table.compact.cell-border
+                            tr
+                                td.no-wrap Events Created
+                                td.text-right
+                                    span#storage-ledger-events-created 0
+                            tr
+                                td.no-wrap New Stale Leaves
+                                td.text-right
+                                    span#storage-ledger-new-state-leaves 0
+                            tr
+                                td.no-wrap New State Nodes
+                                td.text-right
+                                    span#storage-ledger-new-state-nodes 0
+                            tr
+                                td.no-wrap Stale State Leaves
+                                td.text-right
+                                    span#storage-ledger-stale-state-leaves 0
+                            tr
+                                td.no-wrap Stale State Nodes
+                                td.text-right
+                                    span#storage-ledger-stale-state-nodes 0
+
+                div.cell-md-6.cell-lg-3
+                    div( data-role="panel" data-title-caption="JELLYFISH" )
+                        table.table.compact.cell-border
+                            tr
+                                td.no-wrap Internal Encoded Bytes
+                                td.text-right
+                                    span#jellyfish-internal-encoded-bytes 0
+                            tr
+                                td.no-wrap Leaf Encoded Bytes
+                                td.text-right
+                                    span#jellyfish-leaf-encoded-bytes 0
+                            tr
+                                td.no-wrap Storage Reads
+                                td.text-right
+                                    span#jellyfish-storage-reads 0
+
+                div.cell-md-6.cell-lg-3
+                    div( data-role="panel" data-title-caption="METRICS" )
+                        table.table.compact.cell-border
+                            tr
+                                td.no-wrap Families Over 1000
+                                td.text-right
+                                    span#metrics_families_over_1000 0
+                            tr
+                                td.no-wrap Total
+                                td.text-right
+                                    span#metrics_total 0
+                            tr
+                                td.no-wrap Total Bytes
+                                td.text-right
+                                    span#metrics_total_bytes 0
+
+                div.cell-md-6.cell-lg-3
+                    div( data-role="panel" data-title-caption="SEND DATA" )
+                        table.table.compact.cell-border
+                            tr
+                                td.no-wrap Messages Received
+                                td.text-right
+                                    span#network_direct_send_messages_received 0
+                            tr
+                                td.no-wrap Messages Sent
+                                td.text-right
+                                    span#network_direct_send_messages_sent 0
+                            tr
+                                td.no-wrap Bytes Received
+                                td.text-right
+                                    span#network_direct_send_bytes_received 0
+                            tr
+                                td.no-wrap Bytes Sent
+                                td.text-right
+                                    span#network_direct_send_bytes_sent 0
 
 
 
