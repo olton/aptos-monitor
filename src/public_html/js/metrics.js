@@ -105,3 +105,34 @@ const updateTransactions = data => {
     $("#vm_txn_gas_usage_sum").text(vm_txn_gas_usage_sum)
     $("#vm_txn_gas_usage_count").text(vm_txn_gas_usage_count)
 }
+
+const updateQueues = data => {
+    let {
+        network_pending_health_check_events_dequeued,
+        network_pending_health_check_events_enqueued,
+        state_sync_pending_network_events_dequeued,
+        state_sync_pending_network_events_enqueued,
+        storage_service_server_pending_network_events_dequeued,
+        storage_service_server_pending_network_events_enqueued
+    } = data
+
+    $("#network_pending_health_check_events_dequeued").text(network_pending_health_check_events_dequeued)
+    $("#network_pending_health_check_events_enqueued").text(network_pending_health_check_events_enqueued)
+    $("#state_sync_pending_network_events_dequeued").text(state_sync_pending_network_events_dequeued)
+    $("#state_sync_pending_network_events_enqueued").text(state_sync_pending_network_events_enqueued)
+    $("#storage_service_server_pending_network_events_dequeued").text(storage_service_server_pending_network_events_dequeued)
+    $("#storage_service_server_pending_network_events_enqueued").text(storage_service_server_pending_network_events_enqueued)
+}
+
+const updateMetric = data => {
+    updateCounters(data)
+    updateCountersStorageLedger(data)
+    updateCountersJellyfish(data)
+    updateCountersMetrics(data)
+    updateCountersSendData(data)
+    updateCountersConnections(data)
+    updateRpcBytes(data)
+    updateRpcMessages(data)
+    updateTransactions(data)
+    updateQueues(data)
+}

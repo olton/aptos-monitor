@@ -175,30 +175,37 @@ export const parseMetrics = (data = "") => {
             counters.struct_log_processed_count = val
         }
 
+        // +
         if (l.includes("aptos_storage_committed_txns")) {
             counters.storage_committed_txns = val
         }
 
+        // +
         if (l.includes("aptos_vm_system_transactions_executed")) {
             counters.vm_system_transactions_executed = val
         }
 
+        // +
         if (l.includes("aptos_vm_user_transactions_executed")) {
             counters.vm_user_transactions_executed = val
         }
 
+        // +
         if (l.includes("aptos_vm_num_txns_per_block_sum")) {
             counters.vm_num_txns_per_block_sum = val
         }
 
+        // +
         if (l.includes("aptos_vm_num_txns_per_block_count")) {
             counters.vm_num_txns_per_block_count = val
         }
 
+        // +
         if (l.includes("aptos_vm_txn_gas_usage_sum")) {
             counters.vm_txn_gas_usage_sum = val
         }
 
+        // +
         if (l.includes("aptos_vm_txn_gas_usage_count")) {
             counters.vm_txn_gas_usage_count = val
         }

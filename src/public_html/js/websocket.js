@@ -102,15 +102,7 @@ const wsMessageController = (ws, response) => {
             break
         }
         case 'counters': {
-            updateCounters(data)
-            updateCountersStorageLedger(data)
-            updateCountersJellyfish(data)
-            updateCountersMetrics(data)
-            updateCountersSendData(data)
-            updateCountersConnections(data)
-            updateRpcBytes(data)
-            updateRpcMessages(data)
-            updateTransactions(data)
+            updateMetric(data)
             break
         }
     }
