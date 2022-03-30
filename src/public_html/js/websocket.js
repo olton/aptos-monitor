@@ -47,21 +47,29 @@ const wsMessageController = (ws, response) => {
     const requestData = ws => {
         if (isOpen(ws)) {
             ws.send(JSON.stringify({channel: 'platform'}))
-            ws.send(JSON.stringify({channel: 'cpu'}))
-            ws.send(JSON.stringify({channel: 'memory'}))
-            ws.send(JSON.stringify({channel: 'net'}))
             ws.send(JSON.stringify({channel: 'health'}))
             ws.send(JSON.stringify({channel: 'ledger'}))
             ws.send(JSON.stringify({channel: 'sync'}))
             ws.send(JSON.stringify({channel: 'counters'}))
         }
 
-        setTimeout(requestData, 2000, ws)
+        setTimeout(requestData, 5000, ws)
+    }
+
+    const requestSystemResources = ws => {
+        if (isOpen(ws)) {
+            ws.send(JSON.stringify({channel: 'cpu'}))
+            ws.send(JSON.stringify({channel: 'memory'}))
+            ws.send(JSON.stringify({channel: 'net'}))
+        }
+
+        setTimeout(requestSystemResources, 2000, ws)
     }
 
     switch(channel) {
         case 'welcome': {
             requestData(ws)
+            requestSystemResources(ws)
             break
         }
         case 'platform': {

@@ -1,5 +1,6 @@
 import {WebSocketServer, WebSocket} from "ws";
 import {debug} from "./logging.js";
+import {isset} from "../helpers/isset.js";
 
 export const websocket = (server) => {
     globalThis.wss = new WebSocketServer({ server })
@@ -41,11 +42,11 @@ export const websocket = (server) => {
                     break
                 }
                 case "sync": {
-                    response(ws, channel, cache.metrics.sync)
+                    if (cache.metrics && isset(cache.metrics.sync, false)) response(ws, channel, cache.metrics.sync)
                     break
                 }
                 case "counters": {
-                    response(ws, channel, cache.metrics.counters)
+                    if (cache.metrics && isset(cache.metrics.counters, false)) response(ws, channel, cache.metrics.counters)
                     break
                 }
             }
