@@ -22,7 +22,7 @@
     "homepage": "https://github.com/olton/aptos-monitor#readme",
     "scripts": {
         "start": "node --es-module-specifier-resolution=node .",
-        "mon": "node --es-module-specifier-resolution=node ."
+        "mon": "nodemon --es-module-specifier-resolution=node ."
     },
     "dependencies": {
         "@olton/datetime": "^2.0.8",

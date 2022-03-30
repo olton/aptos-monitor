@@ -291,7 +291,7 @@ body {
     }
 }
 
-#cpu-temp, #cpu-cores-count, #ram-total-wrapper {
+#cpu-temp, #cpu-cores-count, #ram-total-wrapper, #ram-percent-wrapper {
     position: absolute;
     top: 0;
     right: 0;
@@ -304,6 +304,11 @@ body {
     justify-content: center;
     font-size: 28px;
     z-index: 1;
+}
+
+#ram-percent-wrapper {
+    right: auto;
+    left: 0;
 }
 
 #cpu-cores-count {
@@ -326,6 +331,11 @@ body {
 
 #ram-total-wrapper {
     #ram-total {
+        line-height: 1;
+    }
+}
+#ram-percent-wrapper {
+    #ram-percent {
         line-height: 1;
     }
 }

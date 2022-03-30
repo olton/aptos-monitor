@@ -1,0 +1,19 @@
+div( data-role="panel" data-title-caption="CPU LOAD" )
+    div.d-block.h-100
+        div#cpu-cores-count.border.bd-system.p-1
+            div#cpu-cores.fg-info2 0
+            div.text-small.border-top.bd-system.mt-1 cores
+        div#cpu-temp.border.bd-system.p-1
+            div#cpu-temp-avg
+            div#cpu-temp-max.border-top.bd-system
+
+        div#cpu-use.mt-2-minus
+
+        div.text-small.text-center.mt-12-minus
+            span Load average:
+            span.ml-1#loadavg 0 0 0
+
+        div.text-small.text-center.mt-1
+            span Temp:
+            span#cpu-temp-main.ml-1.text-bold 0
+            span#cpu-temp-cores.ml-1.reduce-1 0

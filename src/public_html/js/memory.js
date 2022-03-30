@@ -72,7 +72,7 @@ const updateMemory = (data) => {
             onDrawLabelX: (v) => {
                 return ``
             },
-            height: 220,
+            height: 65,
             colors: [Metro.colors.toRGBA('#7dc37b', .5), Metro.colors.toRGBA('#aa00ff', .5)],
             areas: [
                 {
@@ -89,22 +89,27 @@ const updateMemory = (data) => {
     memoryUsageChart.add(0, [datetime().time() - 2000, memTotal], true)
     memoryUsageChart.add(1, [datetime().time() - 2000, memUsage], true)
 
-    if (!memoryGauge) {
-        memoryGauge = chart.gauge('#memory-use', [0], {
-            ...defaultGaugeConfig,
-            backStyle: globalThis.darkMode ? '#1e2228' : '#f0f6fc',
-            padding: 0,
-            boundaries: {
-                max: Math.round(memTotal),
-            },
-            onDrawValue: (v, p) => {
-                return +p.toFixed(0) + "%"
-            }
-        })
-    }
-    memoryGauge.setData([memUsage])
-
     $("#free-ram").text(memFree.toFixed(0))
     $("#used-ram").text(memUsage.toFixed(0))
     $("#ram-total").text(memTotal.toFixed(0))
+    $("#ram-percent").text(Math.round(memUsage * 100 / memTotal))
+    $("#memory-data").html(`
+        <div class="text-small row">
+            <div class="cell-4 text-left no-wrap">
+                <span>Total: </span>
+                <span class="text-bold">${Math.round(memTotal)}</span>
+                <span class="">GiB</span>
+            </div>
+            <div class="cell-4 text-center no-wrap">
+                <span class="ml-1">Used:</span>
+                <span class="text-bold">${Math.round(memUsage)}</span>
+                <span class="">GiB</span>
+            </div>
+            <div class="cell-4 text-right no-wrap">
+                <span class="ml-1">Free:</span>
+                <span class="text-bold">${Math.round(memTotal - memUsage)}</span>
+                <span class="">GiB</span>
+            </div>
+        </div>
+    `)
 }

@@ -47,343 +47,57 @@ html.light-theme.scrollbar-type-1.sb-darkViolet
 
         section.container-fluid
             div.row
-                div.cell-md-6.cell-lg-3#ledger-info
-                    div( data-role="panel" data-title-caption="LEDGER" )
-                        table.table.subcompact.cell-border
-                            tr
-                                td.no-wrap Chain ID
-                                td.text-right
-                                    span#chain_id 0
-                            tr
-                                td Epoch
-                                td.text-right
-                                    span#epoch 0
-                            tr
-                                td Version
-                                td.text-right
-                                    span#ledger_version 0
-                            tr
-                                td Timestamp
-                                td.text-right
-                                    span#ledger_timestamp DD/MM/YYYY HH:mm:ss
+                div.cell-xl-9
+                    div.row
+                        div.cell-md-6.cell-lg-4#ledger-info
+                            include ./blocks/ledger-info
 
-                div.cell-md-6.cell-lg-3#node-sync
-                    div( data-role="panel" data-title-caption="SYNC STATE" )
-                        table.table.subcompact.cell-border
-                            tr
-                                td.no-wrap Committed
-                                td.text-right
-                                    span#sync-committed 0
-                            tr
-                                td Highest
-                                td.text-right
-                                    span#sync-highest 0
-                            tr
-                                td Synced
-                                td.text-right
-                                    span#sync-synced 0
-                            tr
-                                td Target
-                                td.text-right
-                                    span#sync-target 0
-                            tr
-                                td ReConfig Count
-                                td.text-right
-                                    span#state_sync_reconfig_count 0
-                            tr
-                                td Timeout Total
-                                td.text-right
-                                    span#state_sync_timeout_total 0
+                        div.cell-md-6.cell-lg-4#node-sync
+                            include ./blocks/sync-status
 
-                div.cell-md-6.cell-lg-3#node-connections
-                    div( data-role="panel" data-title-caption="CONNECTIONS" )
-                        table.table.subcompact.cell-border
-                            tr
-                                td.no-wrap Inbound
-                                td.text-right
-                                    span#conn-inbound 0
-                            tr
-                                td Outbound
-                                td.text-right
-                                    span#conn-outbound 0
-                            tr
-                                td Events Connected
-                                td.text-right
-                                    span#secure_net_events_connect 0
-                            tr
-                                td Events Read
-                                td.text-right
-                                    span#secure_net_events_read 0
-                            tr
-                                td SME Lost Peer
-                                td.text-right
-                                    span#shared_mempool_events_lost_peer 0
-                            tr
-                                td SME New Peer
-                                td.text-right
-                                    span#shared_mempool_events_new_peer 0
+                        div.cell-md-6.cell-lg-4#node-connections
+                            include ./blocks/connections
 
-                div.cell-md-6.cell-lg-3
-                    div( data-role="panel" data-title-caption="REQUESTS & RESPONSES" )
-                        table.table.subcompact.cell-border
-                            tr
-                                td.no-wrap Sent Requests Total
-                                td.text-right
-                                    span#sent-requests-total 0
-                            tr
-                                td.no-wrap Requests Server Summary
-                                td.text-right
-                                    span#server-summary-requests 0
-                            tr
-                                td.no-wrap Global Summary Errors
-                                td.text-right
-                                    span#server-summary-errors 0
-                            tr
-                                td.no-wrap Error Responses Total
-                                td.text-right
-                                    span#error_responses_total 0
-                            tr
-                                td.no-wrap Error Responses Server
-                                td.text-right
-                                    span#error_responses_storage_server_summary 0
+                        div.cell-md-6.cell-lg-4
+                            include ./blocks/requests
 
-                div.cell-md-6.cell-lg-3
-                    div( data-role="panel" data-title-caption="LEDGER STORAGE" )
-                        table.table.subcompact.cell-border
-                            tr
-                                td.no-wrap Events Created
-                                td.text-right
-                                    span#storage-ledger-events-created 0
-                            tr
-                                td.no-wrap New Stale Leaves
-                                td.text-right
-                                    span#storage-ledger-new-state-leaves 0
-                            tr
-                                td.no-wrap New State Nodes
-                                td.text-right
-                                    span#storage-ledger-new-state-nodes 0
-                            tr
-                                td.no-wrap Stale State Leaves
-                                td.text-right
-                                    span#storage-ledger-stale-state-leaves 0
-                            tr
-                                td.no-wrap Stale State Nodes
-                                td.text-right
-                                    span#storage-ledger-stale-state-nodes 0
+                        div.cell-md-6.cell-lg-4
+                            include ./blocks/ledger-storage
 
-                div.cell-md-6.cell-lg-3
-                    div( data-role="panel" data-title-caption="JELLYFISH" )
-                        table.table.subcompact.cell-border
-                            tr
-                                td.no-wrap Internal Encoded Bytes
-                                td.text-right
-                                    span#jellyfish-internal-encoded-bytes 0
-                            tr
-                                td.no-wrap Leaf Encoded Bytes
-                                td.text-right
-                                    span#jellyfish-leaf-encoded-bytes 0
-                            tr
-                                td.no-wrap Storage Reads
-                                td.text-right
-                                    span#jellyfish-storage-reads 0
+                        div.cell-md-6.cell-lg-4
+                            include ./blocks/jellyfish
 
-                div.cell-md-6.cell-lg-3
-                    div( data-role="panel" data-title-caption="METRICS" )
-                        table.table.subcompact.cell-border
-                            tr
-                                td.no-wrap Families Over 1000
-                                td.text-right
-                                    span#metrics_families_over_1000 0
-                            tr
-                                td.no-wrap Total
-                                td.text-right
-                                    span#metrics_total 0
-                            tr
-                                td.no-wrap Total Bytes
-                                td.text-right
-                                    span#metrics_total_bytes 0
-                            tr
-                                td.no-wrap Discovery Counts
-                                td.text-right
-                                    span#simple_onchain_discovery_counts 0
+                        div.cell-md-6.cell-lg-4
+                            include ./blocks/metrics
 
-                div.cell-md-6.cell-lg-3
-                    div( data-role="panel" data-title-caption="SEND DATA" )
-                        table.table.subcompact.cell-border
-                            tr
-                                td.no-wrap Messages Received
-                                td.text-right
-                                    span#network_direct_send_messages_received 0
-                            tr
-                                td.no-wrap Messages Sent
-                                td.text-right
-                                    span#network_direct_send_messages_sent 0
-                            tr
-                                td.no-wrap Bytes Received
-                                td.text-right
-                                    span#network_direct_send_bytes_received 0
-                            tr
-                                td.no-wrap Bytes Sent
-                                td.text-right
-                                    span#network_direct_send_bytes_sent 0
+                        div.cell-md-6.cell-lg-4
+                            include ./blocks/send-data
 
-                div.cell-md-6.cell-lg-3
-                    div( data-role="panel" data-title-caption="RPC BYTES" )
-                        table.table.subcompact.cell-border
-                            tr
-                                td.no-wrap Received Request
-                                td.text-right
-                                    span#network_rpc_bytes_received_request 0
-                            tr
-                                td.no-wrap Received Response
-                                td.text-right
-                                    span#network_rpc_bytes_received_response 0
-                            tr
-                                td.no-wrap Sent Request
-                                td.text-right
-                                    span#network_rpc_bytes_sent_request 0
-                            tr
-                                td.no-wrap Sent Response
-                                td.text-right
-                                    span#network_rpc_bytes_sent_response 0
+                        div.cell-md-6.cell-lg-4
+                            include ./blocks/rpc-bytes
 
-                div.cell-md-6.cell-lg-3
-                    div( data-role="panel" data-title-caption="RPC MESSAGES" )
-                        table.table.subcompact.cell-border
-                            tr
-                                td.no-wrap Received Request
-                                td.text-right
-                                    span#network_rpc_messages_received_request 0
-                            tr
-                                td.no-wrap Received Response
-                                td.text-right
-                                    span#network_rpc_messages_received_response 0
-                            tr
-                                td.no-wrap Sent Request
-                                td.text-right
-                                    span#network_rpc_messages_sent_request 0
-                            tr
-                                td.no-wrap Sent Response
-                                td.text-right
-                                    span#network_rpc_messages_sent_response 0
-                            tr
-                                td.no-wrap Failed Request
-                                td.text-right
-                                    span#network_rpc_messages_failed_request 0
+                        div.cell-md-6.cell-lg-4
+                            include ./blocks/rpc-messages
 
-                div.cell-md-6.cell-lg-3
-                    div( data-role="panel" data-title-caption="TRANSACTIONS" )
-                        table.table.subcompact.cell-border
-                            tr
-                                td.no-wrap Storage Committed
-                                td.text-right
-                                    span#storage_committed_txns 0
-                            tr
-                                td.no-wrap VM System Executed
-                                td.text-right
-                                    span#vm_system_transactions_executed 0
-                            tr
-                                td.no-wrap VM User Executed
-                                td.text-right
-                                    span#vm_user_transactions_executed 0
-                            tr
-                                td.no-wrap VM Per Block Sum
-                                td.text-right
-                                    span#vm_num_txns_per_block_sum 0
-                            tr
-                                td.no-wrap VM Per Block Count
-                                td.text-right
-                                    span#vm_num_txns_per_block_count 0
-                            tr
-                                td.no-wrap VM Gas Usage Sum
-                                td.text-right
-                                    span#vm_txn_gas_usage_sum 0
-                            tr
-                                td.no-wrap Vm Gas Usage Count
-                                td.text-right
-                                    span#vm_txn_gas_usage_count 0
+                        div.cell-md-6.cell-lg-4
+                            include ./blocks/transactions
 
-                div.cell-md-6.cell-lg-3
-                    div( data-role="panel" data-title-caption="QUEUES" )
-                        table.table.subcompact.cell-border
-                            tr
-                                td.no-wrap Health Dequeued
-                                td.text-right
-                                    span#network_pending_health_check_events_dequeued 0
-                            tr
-                                td.no-wrap Health Enqueued
-                                td.text-right
-                                    span#network_pending_health_check_events_enqueued 0
-                            tr
-                                td.no-wrap Network Dequeued
-                                td.text-right
-                                    span#state_sync_pending_network_events_dequeued 0
-                            tr
-                                td.no-wrap Network Enqueued
-                                td.text-right
-                                    span#state_sync_pending_network_events_enqueued 0
-                            tr
-                                td.no-wrap Storage Dequeued
-                                td.text-right
-                                    span#storage_service_server_pending_network_events_dequeued 0
-                            tr
-                                td.no-wrap Storage Enqueued
-                                td.text-right
-                                    span#storage_service_server_pending_network_events_enqueued 0
+                        div.cell-md-6.cell-lg-4
+                            include ./blocks/queues
 
+                div.cell-xl-3
+                    div.row
+                        div.cell-xl-12.cell-md-6#ram-chart-group
+                            include ./charts/ram-fill
 
+                        div.cell-xl-12.cell-md-6#cpu-usage-group
+                            include ./charts/cpu-usage
 
-        section.container-fluid
-            div.row
-                div.cell-md-6.cell-lg-3#ram-chart-group
-                    div( data-role="panel" data-title-caption="RAM FILL" )
-                        div
-                            div#memory-usage
-                            div#memory-free
+                        div.cell-xl-12.cell-md-6#cpu-load-group
+                            include ./charts/cpu-load
 
-                div.cell-md-6.cell-lg-3#ram-usage-group
-                    div( data-role="panel" data-title-caption="RAM USAGE" )
-                        div.d-block.h-100
-                            div#ram-total-wrapper.border.bd-system.p-1
-                                div#ram-total.fg-info2 0
-                                div.text-small.border-top.bd-system.mt-1 GiB
-
-                            div#memory-use.mt-4
-                            div.text-small.text-center.mt-10-minus
-                                span.fg-normal free:
-                                span#free-ram.fg-green.text-bold.ml-1.mr-1.enlarge-4
-                                span GiB
-
-                                span.ml-1.fg-normal used:
-                                span#used-ram.fg-warning.text-bold.ml-1.mr-1.enlarge-4
-                                span GiB
-
-                div.cell-md-6.cell-lg-3#cpu-usage-group
-                    div( data-role="panel" data-title-caption="CPU <span id='cpu-threads' class='fg-info2'></span> TH'S" )
-                        div.d-block.h-100
-                            div#cpu-load(style="height: 116px")
-                            div#cpu-load-all
-
-                div.cell-md-6.cell-lg-3#cpu-load-group
-                    div( data-role="panel" data-title-caption="CPU LOAD" )
-                        div.d-block.h-100
-                            div#cpu-cores-count.border.bd-system.p-1
-                                div#cpu-cores.fg-info2 0
-                                div.text-small.border-top.bd-system.mt-1 cores
-                            div#cpu-temp.border.bd-system.p-1
-                                div#cpu-temp-avg
-                                div#cpu-temp-max.border-top.bd-system
-
-                            div#cpu-use.mt-4
-
-                            div.text-small.text-center.mt-12-minus
-                                span Load average:
-                                span.ml-1#loadavg 0 0 0
-
-                            div.text-small.text-center.mt-1
-                                span Temp:
-                                span#cpu-temp-main.ml-1.text-bold 0
-                                span#cpu-temp-cores.ml-1.reduce-1 0
+                        div.cell-xl-12.cell-md-6#network-group
+                            include ./charts/network
 
         script.
             globalThis.config = !{clientConfig}
@@ -406,5 +120,6 @@ html.light-theme.scrollbar-type-1.sb-darkViolet
         script(src='/js/node-health.js')
         script(src='/js/memory.js')
         script(src='/js/cpu.js')
+        script(src='/js/network.js')
         script(src='/js/ledger-info.js')
         script(src='/js/metrics.js')

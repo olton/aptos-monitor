@@ -1,0 +1,20 @@
+div( data-role="panel" data-title-caption="RAM USAGE" )
+    div.d-block.h-100
+        div#ram-total-wrapper.border.bd-system.p-1
+            div#ram-total.fg-info2 0
+            div.text-small.border-top.bd-system.mt-1 GiB
+
+        div#ram-percent-wrapper.border.bd-system.p-1
+            div#ram-percent.fg-info2 0
+            div.text-small.border-top.bd-system.mt-1 %
+
+        div#memory-use.mt-2-minus
+
+        div.text-small.text-center.mt-10-minus
+            span.fg-normal free:
+            span#free-ram.fg-green.text-bold.ml-1.mr-1.enlarge-4
+            span GiB
+
+            span.ml-1.fg-normal used:
+            span#used-ram.fg-warning.text-bold.ml-1.mr-1.enlarge-4
+            span GiB

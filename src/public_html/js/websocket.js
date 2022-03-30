@@ -86,7 +86,7 @@ const wsMessageController = (ws, response) => {
             break
         }
         case 'net': {
-            updateNet(data)
+            updateNetwork(data)
             break
         }
         case 'health': {
@@ -109,7 +109,3 @@ const wsMessageController = (ws, response) => {
 }
 
 connect()
-
-const updateNet = data => {
-    // log("Net", data)
-}

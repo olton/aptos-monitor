@@ -8,6 +8,9 @@ const updateCpuLoad = data => {
             ...defaultGaugeConfig,
             backStyle: darkMode ? '#1e2228' : '#f0f6fc',
             padding: 0,
+            backWidth: 24,
+            valueWidth: 22,
+            height: 130,
             onDrawValue: (v, p) => {
                 return +p.toFixed(0) + "%"
             }
@@ -19,7 +22,7 @@ const updateCpuLoad = data => {
             getFakeData(40)
         ], {
             ...defaultChartConfig,
-            height: 110,
+            height: 60,
             areas: [
                 {
                     name: "CPU usage"
@@ -82,7 +85,7 @@ const updateCpuLoad = data => {
 
     if ($("#cpu-load-all").children().length === 0) {
         cpuSegment = chart.segment("#cpu-load-all", threads, {
-            height: 100,
+            height: 80,
             padding: {
                 left: 2,
                 right: 2,
