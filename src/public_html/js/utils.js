@@ -1,4 +1,6 @@
 
+const n2f = (n) => Number(n).format(0, null, " ", ".")
+
 const getFakeData = (len, inc = 2000, init = 0) => {
     const a = []
     let d = datetime().time() - inc * len

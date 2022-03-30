@@ -1,51 +1,51 @@
 
-const updateCounters = data => {
+const updateRequests = data => {
     let {sent_requests_total, sent_requests_summary_server, streaming_service_global_summary_error, error_responses_total, error_responses_storage_server_summary} = data
 
-    $("#sent-requests-total").text(sent_requests_total)
-    $("#server-summary-requests").text(sent_requests_summary_server)
-    $("#server-summary-errors").text(streaming_service_global_summary_error)
-    $("#error_responses_total").text(error_responses_total)
-    $("#error_responses_storage_server_summary").text(error_responses_storage_server_summary)
+    $("#sent-requests-total").text(n2f(sent_requests_total))
+    $("#server-summary-requests").text(n2f(sent_requests_summary_server))
+    $("#server-summary-errors").text(n2f(streaming_service_global_summary_error))
+    $("#error_responses_total").text(n2f(error_responses_total))
+    $("#error_responses_storage_server_summary").text(n2f(error_responses_storage_server_summary))
 }
 
-const updateCountersStorageLedger = data => {
+const updateStorageLedger = data => {
     let {storage_ledger_events_created, storage_ledger_new_state_leaves, storage_ledger_new_state_nodes, storage_ledger_stale_state_leaves, storage_ledger_stale_state_nodes} = data
 
-    $("#storage-ledger-events-created").text(storage_ledger_events_created)
-    $("#storage-ledger-new-state-leaves").text(storage_ledger_new_state_leaves)
-    $("#storage-ledger-new-state-nodes").text(storage_ledger_new_state_nodes)
-    $("#storage-ledger-stale-state-leaves").text(storage_ledger_stale_state_leaves)
-    $("#storage-ledger-stale-state-nodes").text(storage_ledger_stale_state_nodes)
+    $("#storage-ledger-events-created").text(n2f(storage_ledger_events_created))
+    $("#storage-ledger-new-state-leaves").text(n2f(storage_ledger_new_state_leaves))
+    $("#storage-ledger-new-state-nodes").text(n2f(storage_ledger_new_state_nodes))
+    $("#storage-ledger-stale-state-leaves").text(n2f(storage_ledger_stale_state_leaves))
+    $("#storage-ledger-stale-state-nodes").text(n2f(storage_ledger_stale_state_nodes))
 }
 
-const updateCountersJellyfish = data => {
+const updateJellyfish = data => {
     let {jellyfish_internal_encoded_bytes, jellyfish_leaf_encoded_bytes, jellyfish_storage_reads} = data
 
-    $("#jellyfish-internal-encoded-bytes").text(jellyfish_internal_encoded_bytes)
-    $("#jellyfish-leaf-encoded-bytes").text(jellyfish_leaf_encoded_bytes)
-    $("#jellyfish-storage-reads").text(jellyfish_storage_reads)
+    $("#jellyfish-internal-encoded-bytes").text(n2f(jellyfish_internal_encoded_bytes))
+    $("#jellyfish-leaf-encoded-bytes").text(n2f(jellyfish_leaf_encoded_bytes))
+    $("#jellyfish-storage-reads").text(n2f(jellyfish_storage_reads))
 }
 
-const updateCountersMetrics = data => {
+const updateNodeMetrics = data => {
     let {metrics_families_over_1000, metrics_total, metrics_total_bytes, simple_onchain_discovery_counts} = data
 
-    $("#metrics_families_over_1000").text(metrics_families_over_1000)
-    $("#metrics_total").text(metrics_total)
-    $("#metrics_total_bytes").text(metrics_total_bytes)
-    $("#simple_onchain_discovery_counts").text(simple_onchain_discovery_counts)
+    $("#metrics_families_over_1000").text(n2f(metrics_families_over_1000))
+    $("#metrics_total").text(n2f(metrics_total))
+    $("#metrics_total_bytes").text(n2f(metrics_total_bytes))
+    $("#simple_onchain_discovery_counts").text(n2f(simple_onchain_discovery_counts))
 }
 
-const updateCountersSendData = data => {
+const updateSendData = data => {
     let {network_direct_send_messages_received, network_direct_send_messages_sent, network_direct_send_bytes_received, network_direct_send_bytes_sent} = data
 
-    $("#network_direct_send_messages_received").text(network_direct_send_messages_received)
-    $("#network_direct_send_messages_sent").text(network_direct_send_messages_sent)
-    $("#network_direct_send_bytes_received").text(network_direct_send_bytes_received)
-    $("#network_direct_send_bytes_sent").text(network_direct_send_bytes_sent)
+    $("#network_direct_send_messages_received").text(n2f(network_direct_send_messages_received))
+    $("#network_direct_send_messages_sent").text(n2f(network_direct_send_messages_sent))
+    $("#network_direct_send_bytes_received").text(n2f(network_direct_send_bytes_received))
+    $("#network_direct_send_bytes_sent").text(n2f(network_direct_send_bytes_sent))
 }
 
-const updateCountersConnections = data => {
+const updateConnections = data => {
     let {connections_inbound, connections_outbound, secure_net_events_connect, secure_net_events_read, shared_mempool_events_lost_peer, shared_mempool_events_new_peer} = data
 
     $("#conn-inbound").text(connections_inbound)
@@ -59,12 +59,12 @@ const updateCountersConnections = data => {
 const updateSyncState = data => {
     let {committed, highest, synced, target, state_sync_reconfig_count, state_sync_timeout_total} = data
 
-    $("#sync-committed").text(committed)
-    $("#sync-highest").text(highest)
-    $("#sync-synced").text(synced)
-    $("#sync-target").text(target)
-    $("#state_sync_reconfig_count").text(state_sync_reconfig_count)
-    $("#state_sync_timeout_total").text(state_sync_timeout_total)
+    $("#sync-committed").text(n2f(committed))
+    $("#sync-highest").text(n2f(highest))
+    $("#sync-synced").text(n2f(synced))
+    $("#sync-target").text(n2f(target))
+    $("#state_sync_reconfig_count").text(n2f(state_sync_reconfig_count))
+    $("#state_sync_timeout_total").text(n2f(state_sync_timeout_total))
 }
 
 const updateRpcBytes = data => {
@@ -125,12 +125,12 @@ const updateQueues = data => {
 }
 
 const updateMetric = data => {
-    updateCounters(data)
-    updateCountersStorageLedger(data)
-    updateCountersJellyfish(data)
-    updateCountersMetrics(data)
-    updateCountersSendData(data)
-    updateCountersConnections(data)
+    updateRequests(data)
+    updateStorageLedger(data)
+    updateJellyfish(data)
+    updateNodeMetrics(data)
+    updateSendData(data)
+    updateConnections(data)
     updateRpcBytes(data)
     updateRpcMessages(data)
     updateTransactions(data)
