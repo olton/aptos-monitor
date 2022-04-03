@@ -60,3 +60,17 @@ export const getHostMetrics = async ({host = "", port = 9101, prot = "http"}) =>
     return result
 }
 
+export const getHostApiData = async (path = LEDGER_ENDPOINT, json = true) => {
+    const link = `${config.aptos.api}${path}`
+
+    try {
+        const response = await fetch(link);
+        if (response.ok) {
+            return json ? await response.json() : await response.text()
+        } else {
+            return json ? {} : ""
+        }
+    } catch (e) {
+        return json ? {} : ""
+    }
+}
