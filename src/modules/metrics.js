@@ -220,6 +220,22 @@ export const parseMetrics = (data = "") => {
             if (l.includes("lost_peer")) counters.shared_mempool_events_lost_peer = val
             if (l.includes("new_peer")) counters.shared_mempool_events_new_peer = val
         }
+
+        // +
+        if (l.includes("system_physical_core_count")) {
+            counters.system_physical_core_count = val
+        }
+
+        // +
+        if (l.includes("system_total_memory")) {
+            counters.system_total_memory = val
+        }
+
+        // +
+        if (l.includes("system_used_memory")) {
+            counters.system_used_memory = val
+        }
+
     }
 
     return {
