@@ -48,11 +48,11 @@ export const processMetrics = async () => {
 
 export const getHostMetrics = async ({host = "", port = 9101, prot = "http"}) => {
     const link = `${prot}://${host}:${port}/metrics`
-    let result = {}
+    let result = ""
 
     try {
         const response = await fetch(link);
-        result = response.ok ? parseMetrics(await response.text()) : {}
+        result = response.ok ? (await response.text()) : ""
     } catch (e) {
         alert(e.message, e.stack)
     }
