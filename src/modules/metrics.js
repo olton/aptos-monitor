@@ -530,6 +530,11 @@ export const parseMetrics2 = data => {
             counters.network_pending_wire_messages  = val
         }
 
+        // +
+        if (l.includes("mempool_active_upstream_peers_count")) {
+            counters.mempool_active_upstream_peers_count  = val
+        }
+
     }
 
     return counters
