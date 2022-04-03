@@ -2,6 +2,7 @@ import {WebSocketServer, WebSocket} from "ws";
 import {debug} from "./logging.js";
 import {isset} from "../helpers/isset.js";
 import {getHostMetrics} from "./aptos.js";
+import {parseMetrics2} from "./metrics";
 
 export const websocket = (server) => {
     globalThis.wss = new WebSocketServer({ server })
@@ -52,6 +53,10 @@ export const websocket = (server) => {
                 }
                 case "metrics": {
                     response(ws, channel, await getHostMetrics(data))
+                    break
+                }
+                case "metrics2": {
+                    response(ws, channel, parseMetrics2(await getHostMetrics(data)))
                     break
                 }
             }
