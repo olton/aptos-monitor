@@ -10,7 +10,7 @@ export const processNodeHealth = async () => {
         globalThis.cache.health = response.ok ? await response.text() : "aptos-node:error"
     } catch (e) {
         globalThis.cache.health = "aptos-node:error"
-        alert(e.message, e.stack)
+        alert(e.message)
     }
 
     setTimeout(processNodeHealth, 30000)
@@ -24,7 +24,7 @@ export const processLedgerInfo = async () => {
         globalThis.cache.ledger = response.ok ? await response.json() : {}
     } catch (e) {
         globalThis.cache.ledger = {}
-        alert(e.message, e.stack)
+        alert(e.message)
     }
 
     setTimeout(processLedgerInfo, 2000)
@@ -40,7 +40,7 @@ export const processMetrics = async () => {
     } catch (e) {
         globalThis.cache.metricsRaw = ""
         globalThis.cache.metrics = {}
-        alert(e.message, e.stack)
+        alert(e.message)
     }
 
     setTimeout(processMetrics, 5000)
@@ -54,7 +54,7 @@ export const getHostMetrics = async ({host = "", port = 9101, prot = "http"}) =>
         const response = await fetch(link);
         result = response.ok ? (await response.text()) : ""
     } catch (e) {
-        alert(e.message, e.stack)
+        alert(e.message)
     }
 
     return result
