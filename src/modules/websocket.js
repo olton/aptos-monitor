@@ -49,6 +49,10 @@ export const websocket = (server) => {
                     if (cache.metrics && isset(cache.metrics.counters, false)) response(ws, channel, cache.metrics.counters)
                     break
                 }
+                case "metrics": {
+                    response(ws, channel, await getHostMetrics())
+                    break
+                }
             }
         })
     })
