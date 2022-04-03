@@ -3,7 +3,7 @@ import {debug} from "./logging.js";
 import {isset} from "../helpers/isset.js";
 import {getHostApiData, getHostMetrics} from "./aptos.js";
 import {parseMetrics2} from "./metrics";
-import {HEALTH_ENDPOINT} from "../helpers/consts.js";
+import {HEALTH_ENDPOINT, LEDGER_ENDPOINT} from "../helpers/consts.js";
 
 export const websocket = (server) => {
     globalThis.wss = new WebSocketServer({ server })
@@ -62,8 +62,8 @@ export const websocket = (server) => {
                 }
                 case "api2": {
                     response(ws, channel, {
-                        ledger: await getHostApiData(),
-                        health: await getHostApiData(HEALTH_ENDPOINT),
+                        ledger: await getHostApiData({path: LEDGER_ENDPOINT, json: true, ...data}),
+                        health: await getHostApiData({path: HEALTH_ENDPOINT, json: false, ...data}),
                     })
                     break
                 }
