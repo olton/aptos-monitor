@@ -263,6 +263,13 @@ export const parseMetrics2 = data => {
         }
 
         // +
+        if (l.includes("aptos_state_sync_timestamp")) {
+            if (l.includes("committed")) counters.sync_timestamp_committed = val
+            if (l.includes("real")) counters.sync_timestamp_real = val
+            if (l.includes("synced")) counters.sync_timestamp_synced = val
+        }
+
+        // +
         if (l.includes("aptos_state_sync_reconfig_count")) {
             counters.state_sync_reconfig_count = val
         }
@@ -285,6 +292,16 @@ export const parseMetrics2 = data => {
                 counters.sent_requests_total = val
             } else {
                 counters.sent_requests_summary_server = val
+            }
+        }
+
+        // +
+        if (l.includes("aptos_data_client_success_responses")) {
+            let val = l.split(" ")[1]
+            if (l.includes("TOTAL_COUNT")) {
+                counters.data_client_success_responses = val
+            } else {
+                counters.data_client_success_responses_summary_server = val
             }
         }
 
@@ -482,6 +499,37 @@ export const parseMetrics2 = data => {
         if (l.includes("system_used_memory")) {
             counters.system_used_memory = val
         }
+
+        // +
+        if (l.includes("aptos_network_key_mismatch")) {
+            counters.network_key_mismatch = val
+        }
+
+        // +
+        if (l.includes("aptos_network_pending_connection_handler_notifications")) {
+            counters.network_pending_connection_handler_notifications  = val
+        }
+
+        // +
+        if (l.includes("aptos_network_pending_connection_upgrades")) {
+            counters.network_pending_connection_upgrades  = val
+        }
+
+        // +
+        if (l.includes("aptos_network_pending_connectivity_manager_requests")) {
+            counters.network_pending_connectivity_manager_requests  = val
+        }
+
+        // +
+        if (l.includes("aptos_network_pending_peer_manager_dial_requests")) {
+            counters.network_pending_peer_manager_dial_requests  = val
+        }
+
+        // +
+        if (l.includes("aptos_network_pending_wire_messages")) {
+            counters.network_pending_wire_messages  = val
+        }
+
     }
 
     return counters
