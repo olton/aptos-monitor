@@ -57,7 +57,8 @@ export const websocket = (server) => {
                     break
                 }
                 case "metrics2": {
-                    response(ws, channel, parseMetrics2(await getHostMetrics(data)))
+                    const res = await getHostMetrics(data)
+                    response(ws, channel, res.includes(`:error:`) ? res : parseMetrics2(res))
                     break
                 }
                 case "api2": {
