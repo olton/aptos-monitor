@@ -54,6 +54,7 @@ export const getHostMetrics = async ({host = "", port = 9101, prot = "http"}) =>
         const response = await fetch(link);
         result = response.ok ? (await response.text()) : ""
     } catch (e) {
+        result = `:error:${e.message}`
         alert(e.message)
     }
 
@@ -68,9 +69,9 @@ export const getHostApiData = async ({path = LEDGER_ENDPOINT, json = true, host 
         if (response.ok) {
             return json ? await response.json() : await response.text()
         } else {
-            return json ? {} : ""
+            return json ? {error: "no response"} : ":error:no response"
         }
     } catch (e) {
-        return json ? {} : ""
+        return json ? {error: e.message} : `:error:${e.message}`
     }
 }
