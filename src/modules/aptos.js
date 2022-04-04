@@ -64,8 +64,6 @@ export const getHostMetrics = async ({host = "", port = 9101, prot = "http"}) =>
 export const getHostApiData = async ({path = LEDGER_ENDPOINT, json = true, host = "", port = 9101, prot = "http"}) => {
     const link = `${prot}://${host}:${port}${path}`
 
-    console.log(link)
-
     try {
         const response = await fetch(link);
         if (response.ok) {
