@@ -62,6 +62,7 @@ export const websocket = (server) => {
                     break
                 }
                 case "api2": {
+                    // console.log(data)
                     response(ws, channel, {
                         ledger: await getHostApiData({path: LEDGER_ENDPOINT, json: true, ...data}),
                         health: await getHostApiData({path: HEALTH_ENDPOINT, json: false, ...data}),
