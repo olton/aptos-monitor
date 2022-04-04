@@ -1,5 +1,5 @@
 import {HEALTH_ENDPOINT, LEDGER_ENDPOINT} from "../helpers/consts.js";
-import fetch from "node-fetch";
+import fetch, {AbortError} from "node-fetch";
 import {alert} from "./logging.js";
 import {parseMetrics} from "./metrics.js";
 
@@ -50,12 +50,22 @@ export const getHostMetrics = async ({host = "", port = 9101, prot = "http"}) =>
     const link = `${prot}://${host}:${port}/metrics`
     let result = ""
 
+    const controller = new AbortController()
+    const timeout = setTimeout(() => {
+        controller.abort()
+    }, 10000)
+
     try {
-        const response = await fetch(link);
+        const response = await fetch(link, {
+            signal: controller.signal
+        });
         result = response.ok ? (await response.text()) : ""
     } catch (e) {
-        result = `:error:${e.message}`
-        alert(e.message)
+        const msg = (e instanceof AbortError) ? "Get Metrics Data: Operation aborted by timeout" : e.message
+        result = `:error:${msg}`
+        alert(msg)
+    } finally {
+        clearTimeout(timeout)
     }
 
     return result
@@ -63,15 +73,28 @@ export const getHostMetrics = async ({host = "", port = 9101, prot = "http"}) =>
 
 export const getHostApiData = async ({path = LEDGER_ENDPOINT, json = true, host = "", port = 9101, prot = "http"}) => {
     const link = `${prot}://${host}:${port}${path}`
+    let result
+
+    const controller = new AbortController()
+    const timeout = setTimeout(() => {
+        controller.abort()
+    }, 10000)
 
     try {
-        const response = await fetch(link);
+        const response = await fetch(link, {
+            signal: controller.signal
+        });
         if (response.ok) {
-            return json ? await response.json() : await response.text()
+            result = json ? await response.json() : await response.text()
         } else {
-            return json ? {error: "no response"} : ":error:no response"
+            result = json ? {error: "no response"} : ":error:no response"
         }
     } catch (e) {
-        return json ? {error: e.message} : `:error:${e.message}`
+        const msg = (e instanceof AbortError) ? "Get API Data: Operation aborted by timeout" : e.message
+        result = json ? {error: msg} : `:error:${msg}`
+    } finally {
+        clearTimeout(timeout)
     }
+
+    return result
 }
