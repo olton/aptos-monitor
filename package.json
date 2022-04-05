@@ -39,5 +39,7 @@
         "last 1 Firefox versions",
         "last 1 Opera versions",
         "last 1 Edge versions"
-    ]
+    ],
+    "devDependencies": {
+    }
 }

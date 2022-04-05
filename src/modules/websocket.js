@@ -1,7 +1,7 @@
 import {WebSocketServer, WebSocket} from "ws";
 import {debug} from "./logging.js";
 import {isset} from "../helpers/isset.js";
-import {getHostApiData, getHostMetrics} from "./aptos.js";
+import {getHostApiData, getHostMetrics, testPorts} from "./aptos.js";
 import {parseMetrics2} from "./metrics";
 import {HEALTH_ENDPOINT, LEDGER_ENDPOINT} from "../helpers/consts.js";
 
@@ -70,6 +70,13 @@ export const websocket = (server) => {
                     response(ws, channel, {
                         ledger,
                         health,
+                        target: data
+                    })
+                    break
+                }
+                case "port-test": {
+                    response(ws, channel, {
+                        test: await testPorts(data.host, data.ports),
                         target: data
                     })
                     break

@@ -2,6 +2,7 @@ import {HEALTH_ENDPOINT, LEDGER_ENDPOINT} from "../helpers/consts.js";
 import fetch, {AbortError} from "node-fetch";
 import {alert} from "./logging.js";
 import {parseMetrics} from "./metrics.js";
+import {isPortReachable} from "../helpers/port-test.js";
 
 export const processNodeHealth = async () => {
     const link = `${config.aptos.api}${HEALTH_ENDPOINT}`
@@ -96,5 +97,14 @@ export const getHostApiData = async ({path = LEDGER_ENDPOINT, json = true, host 
         clearTimeout(timeout)
     }
 
+    return result
+}
+
+
+export const testPorts = async (host, ports = []) => {
+    const result = {}
+    for (const port of ports) {
+        result[port] = await isPortReachable(port, {host})
+    }
     return result
 }
