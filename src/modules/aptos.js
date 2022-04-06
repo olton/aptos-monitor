@@ -101,10 +101,10 @@ export const getHostApiData = async ({path = LEDGER_ENDPOINT, json = true, host 
 }
 
 
-export const testPorts = async (host, ports = []) => {
+export const testPorts = async (host, ports = {}) => {
     const result = {}
-    for (const port of ports) {
-        result[port] = await isPortReachable(port, {host})
+    for (const port in ports) {
+        result[port] = await isPortReachable(ports[port], {host})
     }
     return result
 }
